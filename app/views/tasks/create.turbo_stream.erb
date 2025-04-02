@@ -1,0 +1,11 @@
+<%= turbo_stream.append "tasks" do %>
+    <%= render @task %>
+  <% end %>
+
+<turbo-stream action="replace" target="progress-container">
+  <template>
+    <div id="progress-container">
+      <%= render partial: "tasks/progress", formats: [:html], locals: {progress: @progress, completed: @completed, total: @total} %>
+    </div>
+  </template>
+</turbo-stream>

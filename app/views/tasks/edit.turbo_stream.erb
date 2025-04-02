@@ -1,0 +1,18 @@
+
+<!--
+<turbo-stream action="replace" target="task_form">
+  <template>
+    <turbo-frame id="task_form">
+      <%= render partial: "form", formats: [:html], locals: { task: @task } %>
+    </turbo-frame>
+  </template>
+</turbo-stream>
+-->
+
+<turbo-stream action="replace" target="<%= dom_id(@task, 'edit') %>">
+  <template>
+    <turbo-frame id="<%= dom_id(@task, 'edit') %>">
+      <%= render partial: "form", formats: [:html], locals: { task: @task } %>
+    </turbo-frame>
+  </template>
+</turbo-stream>

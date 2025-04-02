@@ -1,0 +1,20 @@
+
+<turbo-stream action="replace" target="<%= dom_id(@task, 'edit') %>">
+  <template>
+    <turbo-frame id="<%= dom_id(@task, 'edit') %>">
+      <%= render partial: "task", formats: [:html], locals: { task: @task } %>
+    </turbo-frame>
+  </template>
+</turbo-stream>
+
+
+
+
+<turbo-stream action="replace" target="progress-container">
+  <template>
+    <div id="progress-container">
+      <%= render partial: "tasks/progress", formats: [:html], locals: {progress: @progress, completed: @completed, total: @total} %>
+    </div>
+  </template>
+</turbo-stream>
+

@@ -1,0 +1,32 @@
+<div class="max-w-2xl mx-auto p-6 space-y-6">
+  <!-- New Task Section -->
+  <div class="bg-gray-100 p-4 rounded-lg shadow min-w-[400px]" data-controller="task-form">
+    <button class="bg-blue-500 text-white px-4 py-2 rounded-lg w-full sm:w-auto" 
+            data-action="click->task-form#toggle">
+      Create New Task
+    </button>
+    
+    <div id="new_task_form" data-task-form-target="form" 
+         class="mt-4 min-h-[20px] invisible opacity-0 transition-all duration-300 ease-in-out">
+      <%= render "form", task: Task.new %>
+    </div>
+  </div>
+
+
+  
+  <!-- Progress Section -->
+  <turbo-stream from="tasks_progress"></turbo-stream>
+<%= turbo_stream_from "tasks_progress" %>
+
+  <div id="progress-container">
+    <%= render partial: "tasks/progress", locals: { progress: @progress, completed: @completed, total: @total } %>
+  </div>
+
+  <!-- Task List Section -->
+  <div class="bg-white p-4 rounded-lg shadow min-w-[400px]">
+    <h2 class="text-lg font-semibold">Task List</h2>
+    <div id="tasks" class="mt-4 space-y-4">
+      <%= render @tasks %>
+    </div>
+  </div>
+</div>
